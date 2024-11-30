@@ -31,3 +31,25 @@ const styles = StyleSheet.create({
 });
 
 export default showAlert;
+
+
+
+
+export const showAlertBox = (title, message, onOk, onCancel) => {
+  Alert.alert(
+    title || 'Alert', // Default title if not provided
+    message || 'Something happened!', // Default message
+    [
+      {
+        text: 'Cancel',
+        onPress: onCancel || (() => console.log('Cancel Pressed')),
+        style: 'cancel',
+      },
+      {
+        text: 'OK',
+        onPress: onOk || (() => console.log('OK Pressed')),
+      },
+    ],
+    { cancelable: true }
+  );
+};

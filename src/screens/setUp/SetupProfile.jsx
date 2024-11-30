@@ -11,7 +11,7 @@ import { updateUser } from '../../api/authApi';
 export default function FillProfile({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [imageUri, setImageUri] = useState(null);
-  const {userDetails, setUpDetails} = useContext(AppContext)
+  //const {userDetails, setUpDetails} = useContext(AppContext)
 
   const handleSelectImage = async (fromCamera) => {
     try {
@@ -24,7 +24,7 @@ export default function FillProfile({navigation}) {
   };
 
   const handleNavigate = async () => {
-    updateUser(setUpDetails);
+   // updateUser(setUpDetails);
     navigation.navigate("HomeScreen")
   }
 
@@ -74,11 +74,11 @@ export default function FillProfile({navigation}) {
           </View>
           <View style={styles.form}>
             <Text style={styles.label}>Full name</Text>
-            <TextInput style={styles.input} placeholder={`${userDetails.firstName}`} />
+            <TextInput style={styles.input} />
             <Text style={styles.label}>Nickname</Text>
             <TextInput style={styles.input} placeholder='nickname' />
             <Text style={styles.label}>Email</Text>
-            <TextInput style={styles.input} placeholder={`${userDetails.email}`} />
+            <TextInput style={styles.input} />
             <Text style={styles.label}>Mobile Number</Text>
             <TextInput style={styles.input} placeholder="+91" />
           </View>

@@ -7,11 +7,12 @@ const SplashScreen = ({ navigation }) => {
     const timer = () => {
         setTimeout(async () => {
             try {
-                const value = await AsyncStorage.getItem('Onboarding')
-                if (value == false) {
-                    navigation.navigate('Onboarding')
-                } else {
+                const value = await AsyncStorage.getItem('isOnboard')
+                console.log("chck ->",value)
+                if (value == true) {
                     navigation.navigate('Login')
+                } else {
+                    navigation.navigate('Onboarding')
                 }
             }
             catch (err) {

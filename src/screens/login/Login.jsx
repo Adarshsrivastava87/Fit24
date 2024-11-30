@@ -9,7 +9,8 @@ import {
 import { StatusBarWrapper } from '../../components/statusBarWrapper/StatusBarWrapper';
 import Button from '../../components/button/Button';
 import InputField from '../../components/inputField/customeInputField';
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { showAlertBox } from '../../utility/validations/Alert';
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,6 +33,21 @@ const Login = ({ navigation }) => {
     };
   }, [navigation]);
 
+
+  check =async ()=>{
+   await AsyncStorage.setItem("isOnboard",false)
+  };
+
+  const validateCredentials = () => {
+    const validEmail = "Test@12345";
+    const validPassword = "test@12345";
+  
+    if (email === validEmail && password === validPassword) {
+      return navigation.navigate('Onboarding');
+    } else {
+      return showAlertBox("invalid","invalid username/password");
+    }
+  };
   return (
     <StatusBarWrapper backgroundColor="#1A1D2A" barStyle="light-content">
       <View style={styles.container}>
@@ -62,7 +78,10 @@ const Login = ({ navigation }) => {
 
           <Button
             label="Log In"
-            onPress={() => navigation.navigate('Onboarding')}
+            onPress={() =>
+              validateCredentials()
+             }
+            
             width="100%"
             style={styles.loginButton}
           />
@@ -70,7 +89,7 @@ const Login = ({ navigation }) => {
 
         <View style={styles.footerContainer}>
           <Text style={styles.noAccountText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <TouchableOpacity onPress={()=>check}>
             <Text style={styles.signUpText}>Sign Up</Text>
           </TouchableOpacity>
         </View>

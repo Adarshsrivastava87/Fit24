@@ -59,8 +59,8 @@ const OnboardingB = ({ navigation }) => {
 
     const setOnboardingShown = () => {
         try {
-            AsyncStorage.setItem('onboardingShown', 'true')
-            navigation.navigate('Login')
+            AsyncStorage.setItem('isOnboard',true)
+            navigation.navigate('SetUp')
         }
         catch (err) {
             console.log(err)
