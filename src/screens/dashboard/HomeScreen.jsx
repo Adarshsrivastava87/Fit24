@@ -18,6 +18,10 @@ import { AppContext } from '../../context_api/AppContext';
 import PedometerWrapper from './PedometerWrapper';
 import TimerWrapper from './TimerWrapper';
 import { sendUserActivityData } from '../../api/activityAPI';
+import RecommendationSection from './Recommandation';
+import YourComponent from './Tabs';
+import CustomTabs from './Tabs';
+import ExerciseList from './workoutList';
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -39,36 +43,36 @@ const HomeScreen = ({ navigation }) => {
 
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    calledRef.current = apiCalled;
-    secondRef.current = seconds;
-    stepsRef.current = currentSteps;
-  }, [seconds, apiCalled, currentSteps])
+  // useEffect(() => {
+  //   calledRef.current = apiCalled;
+  //   secondRef.current = seconds;
+  //   stepsRef.current = currentSteps;
+  // }, [seconds, apiCalled, currentSteps])
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      if (secondRef.current > 1 && !calledRef.current) {
-        const addOns =
-        {
-          steps: stepsRef.current,
-          timerDurationSeconds: secondRef.current,
-          timestamp: new Date().getTime(),
-          caloriesData: stepsRef.current * CALORIE_RATE,
-          distance: stepsRef.current * DISTANCE_RATE,
-        };
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     if (secondRef.current > 1 && !calledRef.current) {
+  //       const addOns =
+  //       {
+  //         steps: stepsRef.current,
+  //         timerDurationSeconds: secondRef.current,
+  //         timestamp: new Date().getTime(),
+  //         caloriesData: stepsRef.current * CALORIE_RATE,
+  //         distance: stepsRef.current * DISTANCE_RATE,
+  //       };
 
-        updateUserData(addOns);
-        setStepData(data => [...data, addOns]);
-        setAPICalled(() => true);
-        setPedoReset(() => true);
-      }
-    }, 10000);
-    return () => clearInterval(id);
-  }, []);
+  //       updateUserData(addOns);
+  //       setStepData(data => [...data, addOns]);
+  //       setAPICalled(() => true);
+  //       setPedoReset(() => true);
+  //     }
+  //   }, 10000);
+  //   return () => clearInterval(id);
+  // }, []);
 
-  const updateUserData = async (request) => {
-    await sendUserActivityData(request);
-  }
+  // const updateUserData = async (request) => {
+  //   await sendUserActivityData(request);
+  // }
 
   handleProfilePress = () => {
     navigation.navigate('ProfileScreen')
@@ -105,73 +109,11 @@ const HomeScreen = ({ navigation }) => {
               </View>
             </View>
 
-            <View style={styles.sections}>
-              <TouchableOpacity onPress={() => showAlert()}>
-                <View style={styles.section}>
-                  <Image
-                    source={require('../../assets/icons/workout.png')}
-                    style={styles.icon}
-                  />
-                  <Text style={styles.sectionText}>Workout</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('TrackerScreen')}>
-                <View style={styles.section}>
-                  <Image
-                    source={require('../../assets/icons/analytics.png')}
-                    style={styles.icon}
-                  />
-                  <Text style={styles.sectionText}>Progress Tracking</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={() => showAlert()}>
-                <View style={styles.section}>
-                  <Image
-                    source={require('../../assets/icons/nutrition.png')}
-                    style={styles.icon}
-                  />
-                  <Text style={styles.sectionText}>Nutrition</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => showAlert()}>
-                <View style={styles.section}>
-                  <Image
-                    source={require('../../assets/icons/community.png')}
-                    style={styles.icon}
-                  />
-                  <Text style={styles.sectionText}>Community</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+          <CustomTabs/>
 
             <View style={styles.recommendations}>
               <Text style={styles.recommendationTitle}>Recommendations</Text>
-              <View style={styles.recommendationRow}>
-                <View style={styles.recommendation}>
-                  <Image
-                    style={styles.recommendationImage}
-                    source={require('../../assets/images/squat.png')}
-                  />
-                  <Text style={styles.recommendationText}>Squat Exercise</Text>
-                  <Text style={styles.recommendationSubtext}>
-                    12 Minutes 120 Kcal
-                  </Text>
-                </View>
-                <View style={styles.recommendation}>
-                  <Image
-                    style={styles.recommendationImage}
-                    source={require('../../assets/images/stretching.png')}
-                  />
-                  <Text style={styles.recommendationText}>
-                    Full Body Stretching
-                  </Text>
-                  <Text style={styles.recommendationSubtext}>
-                    12 Minutes 120 Kcal
-                  </Text>
-                </View>
-              </View>
+           <RecommendationSection/>
             </View>
 
             <View style={styles.weeklyChallenge}>
@@ -197,7 +139,7 @@ const HomeScreen = ({ navigation }) => {
               </View>
             </View>
 
-            <View style={styles.articles}>
+            {/* <View style={styles.articles}>
               <Text style={styles.articlesTitle}>Articles & Tips</Text>
               <View style={styles.articleRow}>
                 <View style={styles.article}>
@@ -220,7 +162,12 @@ const HomeScreen = ({ navigation }) => {
                   </Text>
                 </View>
               </View>
+            </View> */}
+            <View>
+            <Text>Exercise List </Text>
+            <ExerciseList/>
             </View>
+            
           </ScrollView>
         }
       </StatusBarWrapper>

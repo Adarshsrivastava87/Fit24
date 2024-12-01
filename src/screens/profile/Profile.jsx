@@ -23,16 +23,11 @@ const ProfileScreen = ({ navigation }) => {
   };
 
   const handleLogout = async () => {
-    const response = await logoutUser({});
-    if (response?.data && response?.data?.status === 1) {
-      // setLoader(false);
-      setUserDetails({});
-      setLoginStatus(false);
+
+
       await AsyncStorage.clear();
       navigation.navigate('Login');
-    } else {
-      setLoginStatus(false);
-    }
+  
   };
 
   const cmToFeetAndInches = (cm) => {

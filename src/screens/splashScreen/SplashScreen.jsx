@@ -12,7 +12,8 @@ const SplashScreen = ({ navigation }) => {
                 if (value == true) {
                     navigation.navigate('Login')
                 } else {
-                    navigation.navigate('Onboarding')
+                   // navigation.navigate('Onboarding')
+                    navigation.navigate('Login')
                 }
             }
             catch (err) {

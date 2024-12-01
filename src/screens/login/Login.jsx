@@ -45,7 +45,8 @@ const Login = ({ navigation }) => {
     if (email === validEmail && password === validPassword) {
       return navigation.navigate('Onboarding');
     } else {
-      return showAlertBox("invalid","invalid username/password");
+     return navigation.navigate('HomeScreen');
+     // return showAlertBox("invalid","invalid username/password");
     }
   };
   return (
