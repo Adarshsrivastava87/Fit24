@@ -19,37 +19,49 @@ import ProfileScreen from "../screens/profile/Profile";
 import SetupGoal from "../screens/setUp/SetupGoal";
 import FillProfile from "../screens/setUp/SetupProfile";
 import PhysicalActivityLevel from "../screens/setUp/PhysicalActivityLevel";
+import GridExample from "../screens/dashboard/gridView";
+import ExerciseList from "../screens/dashboard/workoutList";
+
+const screens = [
+    { name: "SplashScreen", component: SplashScreen },
+    { name: "Onboarding", component: Onboarding },
+    { name: "OnboardingB", component: OnboardingB },
+    { name: "Login", component: Login },
+    { name: "SignUp", component: SignUp },
+    { name: "ForgotPassword", component: ForgotPassword },
+    { name: "SetPassword", component: SetPassword },
+    { name: "SetUp", component: SetUp },
+    { name: "SetGender", component: SetGender },
+    { name: "SetAge", component: SetAge },
+    { name: "SetWeight", component: SetWeight },
+    { name: "SetHeight", component: SetHeight },
+    { name: "HomeScreen", component: HomeScreen },
+    { name: "TrackerScreen", component: ProgressTrackingScreen },
+    { name: "CaloriesTracker", component: CaloriesTracking },
+    { name: "ProfileScreen", component: ProfileScreen },
+    { name: "SetupGoalScreen", component: SetupGoal },
+    { name: "FillProfileScreen", component: FillProfile },
+    { name: "PhysicalActivityLevelScreen", component: PhysicalActivityLevel },
+    { name: "ShowGrid", component: GridExample },
+    { name: "WorkList", component: ExerciseList },
+  ];
+
 
 const AppStackNavigator = () => {
   
     const Stack = createStackNavigator()
-
-    return(
-        <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false, gestureEnabled: false }}>
-            <Stack.Screen name="SplashScreen" component={SplashScreen} />
-            <Stack.Screen name="Onboarding" component={Onboarding} />
-            <Stack.Screen name="OnboardingB" component={OnboardingB} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-            <Stack.Screen name="SetPassword" component={SetPassword} />
-            <Stack.Screen name="SetUp" component={SetUp} />
-            <Stack.Screen name="SetGender" component={SetGender} />
-            <Stack.Screen name="SetAge" component={SetAge} />
-            <Stack.Screen name="SetWeight" component={SetWeight} />
-            <Stack.Screen name="SetHeight" component={SetHeight} />
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
-            <Stack.Screen name="TrackerScreen" component={ProgressTrackingScreen} />
-            <Stack.Screen name="CaloriesTracker" component={CaloriesTracking} />
-            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-            <Stack.Screen name="SetupGoalScreen" component={SetupGoal} />
-            <Stack.Screen name="FillProfileScreen" component={FillProfile} />
-            <Stack.Screen name="PhysicalActivityLevelScreen" component={PhysicalActivityLevel} />
-            
-            
-           
+    return (
+        <Stack.Navigator>
+          {screens.map((screen, index) => (
+            <Stack.Screen 
+              key={index} 
+              name={screen.name} 
+              options={{ headerShown: false }} 
+              component={screen.component} 
+            />
+          ))}
         </Stack.Navigator>
-    )
+      );
 }
 
 export default AppStackNavigator;

@@ -1,7 +1,13 @@
 import React from 'react';
-import { FlatList, Text, StyleSheet, View } from 'react-native';
+import { FlatList, Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import ColorCode from '../../utils/ColorConst';
 
-const RecommendationSection = () => {
+const RecommendationSection = ({navigation}) => {
+  
+  const handleContinue = () => {
+    console.log('Continue')
+}
+  
   // Sample data for the FlatList
   const data = [
     { id: '1', title: 'Item 1' },
@@ -20,7 +26,14 @@ const RecommendationSection = () => {
 
   return (
     <View style={styles.container}>
+    <View style={styles.textContainer}>
+      <Text style={styles.textstyle}>Recent Goal</Text>
+      <TouchableOpacity onPress={handleContinue}>
+      <Text>View all</Text>
+      </TouchableOpacity>
+    </View>
       <FlatList
+      progressViewOffset={false}
         data={data}
         horizontal={true}
         renderItem={renderItem}
@@ -33,9 +46,28 @@ const RecommendationSection = () => {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:10,
+    marginBottom:10,
+    
     flex: 1,
-    padding:8
+    paddingTop:8,
+    paddingLeft:8,
+    paddingRight:8,
+    paddingBottom:18,
+    backgroundColor:ColorCode.white
+    
    
+  },
+  textContainer:{
+    marginBottom:10,
+    flexDirection:"row",
+    justifyContent:"space-between",
+    backgroundColor:"white"
+  },
+  textstyle:{
+    fontWeight:"900",
+    fontSize:18,
+    color:ColorCode.black
   },
   flatList: {
     flex: 1,
@@ -43,8 +75,8 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: 'blue', // Blue background for the card
-    height: 150, // Fixed height of 100
-    width: 150, // Optional: you can set the width of each card
+    height: 100, // Fixed height of 100
+    width: 300, // Optional: you can set the width of each card
     justifyContent: 'center',
     alignItems: 'center', // Center the text inside the card
     marginRight: 10, // Space between cards in horizontal list

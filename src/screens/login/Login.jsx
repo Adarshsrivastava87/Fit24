@@ -90,7 +90,7 @@ const Login = ({ navigation }) => {
 
         <View style={styles.footerContainer}>
           <Text style={styles.noAccountText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={()=>check}>
+          <TouchableOpacity onPress={()=>navigation.navigate("showGrid")}>
             <Text style={styles.signUpText}>Sign Up</Text>
           </TouchableOpacity>
         </View>

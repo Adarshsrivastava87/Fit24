@@ -1,0 +1,115 @@
+{
+    "shoulder_exercises": [
+      {
+        "name": "Front Deltoid",
+        "target_muscle": "Anterior Deltoid",
+        "exercises": [
+          {
+            "name": "Arnold Press",
+            "image_url": "https://training.fit/wp-content/uploads/2020/03/arnold-press-2.png"
+          },
+          {
+            "name": "Front Raise (Dumbbells, Barbell, or Plate)",
+            "image_url": "https://liftmanual.com/wp-content/uploads/2023/04/weighted-front-raise.jpg"
+          },
+          {
+            "name": "Overhead Shoulder Press (Barbell or Dumbbells)",
+            "image_url": "https://static.strengthlevel.com/images/exercises/shoulder-press/shoulder-press-800.jpg"
+          },
+          {
+            "name": "Incline Bench Front Raise",
+            "image_url": "https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-incline-front-raise.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Side Deltoid",
+        "target_muscle": "Lateral Deltoid",
+        "exercises": [
+          {
+            "name": "Lateral Raises (Dumbbells or Cable)",
+            "image_url": "https://training.fit/wp-content/uploads/2020/03/arnold-press-2.png"
+          },
+          {
+            "name": "Arnold Press",
+            "image_url": "https://training.fit/wp-content/uploads/2020/03/arnold-press-2.png"
+          },
+          {
+            "name": "Upright Rows (Barbell or Dumbbells)",
+            "image_url": "https://liftmanual.com/wp-content/uploads/2023/04/weighted-front-raise.jpg"
+          },
+          {
+            "name": "Side Plank with Arm Raise",
+            "image_url": "https://static.strengthlevel.com/images/exercises/shoulder-press/shoulder-press-800.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Rear Deltoid",
+        "target_muscle": "Posterior Deltoid",
+        "exercises": [
+          {
+            "name": "Reverse Fly (Dumbbells or Machine)",
+            "image_url": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/01/HL-07.02.RearDeltoidMachine.gif?h=840"
+          },
+          {
+            "name": "Face Pulls (Cable)",
+            "image_url": "https://static.strengthlevel.com/images/exercises/shoulder-press/shoulder-press-800.jpg"
+          },
+          {
+            "name": "Bent-over Lateral Raise",
+            "image_url": "https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-incline-front-raise.jpg"
+          },
+          {
+            "name": "Rear Delt Row",
+            "image_url": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/01/HL-07.02.RearDeltoidMachine.gif?h=840"
+          }
+        ]
+      },
+      {
+        "name": "Rotator Cuff",
+        "target_muscle": "Rotator Cuff Muscles",
+        "exercises": [
+          {
+            "name": "External Rotations (Cable or Dumbbells)",
+            "image_url": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/01/HL-07.02.RearDeltoidMachine.gif?h=840"
+          },
+          {
+            "name": "Internal Rotations (Cable or Dumbbells)",
+            "image_url": "https://static.strengthlevel.com/images/exercises/shoulder-press/shoulder-press-800.jpg"
+          },
+          {
+            "name": "Face Pulls with External Rotation",
+            "image_url": "https://liftmanual.com/wp-content/uploads/2023/04/weighted-front-raise.jpg"
+          },
+          {
+            "name": "Wall Angels",
+            "image_url": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/01/HL-07.02.RearDeltoidMachine.gif?h=840"
+          }
+        ]
+      },
+      {
+        "name": "Compound Shoulder Movements",
+        "target_muscle": "Multiple Shoulder Muscles",
+        "exercises": [
+          {
+            "name": "Military Press (Barbell or Dumbbells)",
+            "image_url": "https://static.strengthlevel.com/images/exercises/shoulder-press/shoulder-press-800.jpg"
+          },
+          {
+            "name": "Push Press",
+            "image_url": "https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-incline-front-raise.jpg"
+          },
+          {
+            "name": "Clean and Press",
+            "image_url": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/01/HL-07.02.RearDeltoidMachine.gif?h=840"
+          },
+          {
+            "name": "Handstand Push-Ups",
+            "image_url": "https://liftmanual.com/wp-content/uploads/2023/04/weighted-front-raise.jpg"
+          }
+        ]
+      }
+    ]
+  }
+  

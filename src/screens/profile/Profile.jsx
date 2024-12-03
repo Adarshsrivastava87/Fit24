@@ -15,7 +15,7 @@ const ProfileScreen = ({ navigation }) => {
       // setLoader(false);
       setUserDetails({});
       setLoginStatus(false);
-      await AsyncStorage.clear();
+      //await AsyncStorage.clear();
       navigation.navigate('Login');
     } else {
       setLoginStatus(false);
@@ -23,9 +23,7 @@ const ProfileScreen = ({ navigation }) => {
   };
 
   const handleLogout = async () => {
-
-
-      await AsyncStorage.clear();
+      //await AsyncStorage.clear();
       navigation.navigate('Login');
   
   };

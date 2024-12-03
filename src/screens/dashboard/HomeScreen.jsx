@@ -22,6 +22,10 @@ import RecommendationSection from './Recommandation';
 import YourComponent from './Tabs';
 import CustomTabs from './Tabs';
 import ExerciseList from './workoutList';
+import UserProfileSection from '../profile/userProfileSection';
+import ColorCode from '../../utils/ColorConst';
+import CustomActivityComponents from './Activity';
+import EmptyBox from '../../utility/validations/utils';
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -86,93 +90,21 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <>
-      <StatusBarWrapper backgroundColor="#002D63" barStyle="light-content">
+     
         {loading ? <Loader loading={loading} /> :
-          <ScrollView style={styles.container}>
-            <View style={styles.header}>
-              {console.log(seconds, 'home screen seconds')}
-              <View style={styles.heading}>
-                <Text style={styles.greeting}>Hi, {userDetails?.firstName}</Text>
-                <Text style={styles.subtitle}>
-                  It's time to challenge your limits.
-                </Text>
-              </View>
-              <View style={styles.iconRow}>
-                <View style={styles.headerIcons}>
-                  <TouchableOpacity onPress={() => handleProfilePress()}>
-                    <Image
-                      source={require('../../assets/icons/user.png')}
-                      style={{ marginRight: 10, height: 18, width: 14 }}
-                    />
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-
-          <CustomTabs/>
-
-            <View style={styles.recommendations}>
-              <Text style={styles.recommendationTitle}>Recommendations</Text>
+        <View >
+        <UserProfileSection/>
+     <View style={{height:Dimensions.get("screen").height ,backgroundColor:"yellow"}}>
+          <ScrollView style={styles.container} nestedScrollEnabled = {true}>
+          <CustomActivityComponents/>
            <RecommendationSection/>
-            </View>
-
-            <View style={styles.weeklyChallenge}>
-              <View
-                style={{
-                  backgroundColor: '#212020',
-                  width: '90%',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  borderRadius: 10,
-                }}>
-                <View style={{ justifyContent: 'center', padding: 25 }}>
-                  <Text style={styles.weeklyChallengeText}>Weekly</Text>
-                  <Text style={styles.weeklyChallengeText}>Challenge</Text>
-                  <Text style={{ color: '#fff', alignSelf: 'center' }}>
-                    Swimming
-                  </Text>
-                </View>
-                <Image
-                  style={styles.weeklyChallengeImage}
-                  source={require('../../assets/images/swimming.png')}
-                />
-              </View>
-            </View>
-
-            {/* <View style={styles.articles}>
-              <Text style={styles.articlesTitle}>Articles & Tips</Text>
-              <View style={styles.articleRow}>
-                <View style={styles.article}>
-                  <Image
-                    style={styles.articleImage}
-                    resizeMode="contain"
-                    source={require('../../assets/images/supplement.png')}
-                  />
-
-                  <Text style={styles.articleText}>Supplement Guide</Text>
-                </View>
-                <View style={styles.article}>
-                  <Image
-                    style={styles.articleImage}
-                    resizeMode="contain"
-                    source={require('../../assets/images/dailyRoutine.png')}
-                  />
-                  <Text style={styles.articleText}>
-                    15 Quick & Effective Daily Routines
-                  </Text>
-                </View>
-              </View>
-            </View> */}
-            <View>
-            <Text>Exercise List </Text>
             <ExerciseList/>
-            </View>
-            
+           <EmptyBox Boxheight={160}/>
           </ScrollView>
+          </View>
+          </View>
         }
-      </StatusBarWrapper>
-      <PedometerWrapper />
-      <TimerWrapper />
+   
     </>
   );
 };
@@ -180,26 +112,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#002D63',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 20,
-  },
-  heading: {
-    // backgroundColor:"yellow",
-    flexDirection: 'column',
-  },
-  greeting: {
-    fontSize: 24,
-    color: '#20BF55',
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#fff',
-    marginTop: 5,
+    backgroundColor:ColorCode.backgroundColor,
   },
   iconRow: {
     flexDirection: 'row',
@@ -260,23 +173,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 5,
   },
-  weeklyChallenge: {
-    padding: 20,
-    backgroundColor: '#20BF55',
-    alignItems: 'center',
-  },
-  weeklyChallengeText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    // padding:10,
-    alignSelf: 'center',
-  },
-  weeklyChallengeImage: {
-    width: '50%',
-    height: 125,
-    borderRadius: 10,
-  },
+ 
   articles: {
     padding: 20,
     backgroundColor: '#002D63',

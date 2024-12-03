@@ -1,10 +1,13 @@
 /* eslint-disable prettier/prettier */
 const ColorCode = {
-    backgroundColor: '#002D63',
+    backgroundColor:" rgb(196, 248, 196)",
     green:"#20BF55",
     grey:"#E6E7E8",
     textColor:'#FFFFFF',
-    black:'black'
+    black:'black',
+    white:'#FFFFFF',
+
+    
   };
   export default ColorCode;
 

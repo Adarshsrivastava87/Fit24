@@ -1,80 +1,139 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import ColorCode from '../../utils/ColorConst';
+import { useNavigation } from '@react-navigation/native';
 
 const ExerciseList = () => {
+  const navigation = useNavigation();
+
   const exercises = [
-    { id: '1', name: 'Push Ups' },
-    { id: '2', name: 'Squats' },
-    { id: '3', name: 'Plank' },
-    { id: '4', name: 'Pull Ups' },
-    { id: '5', name: 'Lunges' },
+    { id: '1', name: 'Push Ups', howmuchDone: 90 },
+    { id: '2', name: 'Squats', howmuchDone: 80 },
+    { id: '3', name: 'Plank', howmuchDone: 50 },
+    { id: '4', name: 'Pull Ups', howmuchDone: 100 },
+    { id: '5', name: 'Lunges', howmuchDone: 0 },
   ];
 
   const renderItem = ({ item }) => (
-    <View style={styles.listTile}>
-      {/* <Image
-        source={require('../../assets/icons/dumbbell.png')} // Replace with your own icon
-        style={styles.icon}
-      /> */}
-      <Text style={styles.exerciseName}>{item.name}</Text>
-      <View style={styles.counterContainer}>
-        <Text style={styles.exerciseCount}>1</Text>
+    <View style={styles.card}>
+      <View style={styles.leftContainer}>
+        <Image
+          source={require('../../assets/images/setUpImage.png')} // Replace with your image
+          style={styles.icon}
+        />
+        <View style={styles.textContainer}>
+          <Text style={styles.exerciseName}>{item.name}</Text>
+          <Text style={styles.subText}>Daily Target</Text>
+        </View>
+      </View>
+      <View style={styles.rightContainer}>
+        <AnimatedCircularProgress
+          size={70} // Adjusted size for better look
+          width={8} // Thicker progress bar
+          fill={item.howmuchDone}
+          tintColor={ColorCode.green}
+          backgroundColor={ColorCode.grey}
+          lineCap="round"
+        >
+          {(fill) => <Text style={styles.progressText}>{`${Math.round(fill)}%`}</Text>}
+        </AnimatedCircularProgress>
       </View>
     </View>
   );
 
   return (
-    <FlatList
-      data={exercises}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id}
-      contentContainerStyle={styles.container}
-    />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Workout of the Day</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("ShowGrid")}>
+          <Text style={styles.signUpText}>View all</Text>
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        data={exercises}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContainer}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+   flex: 1,
+    backgroundColor: ColorCode.white, // Soft background color
+    paddingHorizontal: 16,
+    paddingTop: 16,
+   // paddingBottom:100
   },
-  listTile: {
+  header: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: ColorCode.black,
+  },
+  signUpText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: ColorCode.blue,
+  },
+  listContainer: {
+    paddingBottom: 16,
+  },
+  card: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    padding: 15,
-    marginBottom: 15,
-    borderRadius: 12,
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 12,
     shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
     shadowOffset: { width: 0, height: 4 },
-    elevation: 5,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: ColorCode.lightGray, // Light border for subtle separation
+  },
+  leftContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
-    width: 40,
-    height: 40,
-    tintColor: '#3498db', // Icon color
-    marginRight: 15,
+    width: 55,
+    height: 55,
+    borderRadius: 27.5,
+    backgroundColor: ColorCode.grey,
+    marginRight: 16,
+  },
+  textContainer: {
+    flexDirection: 'column',
   },
   exerciseName: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#333',
-    flex: 1, // Allow text to take up available space
+    color: ColorCode.black,
+    marginBottom: 4,
   },
-  counterContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#3498db',
-    justifyContent: 'center',
+  subText: {
+    fontSize: 14,
+    color: '#888',
+  },
+  rightContainer: {
     alignItems: 'center',
   },
-  exerciseCount: {
+  progressText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontWeight: '700',
+    color: ColorCode.black,
   },
 });
 
