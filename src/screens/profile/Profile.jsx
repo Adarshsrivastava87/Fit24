@@ -1,13 +1,10 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StatusBarWrapper } from '../../components/statusBarWrapper/StatusBarWrapper';
 import ColorCode from '../../utils/ColorConst';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { deleteUser, logoutUser } from '../../api/authApi';
 import { useContext, useEffect } from 'react';
-import { AppContext } from '../../context_api/AppContext';
 
 const ProfileScreen = ({ navigation }) => {
-  const { setLoginStatus, setUserDetails, userDetails } = useContext(AppContext);
+  const { setLoginStatus, setUserDetails, userDetails } = useContext();
 
   const handleDeleteAccount = async () => {
     const response = await deleteUser({});

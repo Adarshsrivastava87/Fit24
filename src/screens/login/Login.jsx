@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
+  Animated,
   BackHandler,
   StyleSheet,
   Text,
@@ -14,7 +15,15 @@ import { showAlertBox } from '../../utility/validations/Alert';
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+const animation = useRef(new Animated.Value(0)).current
+const startAnimation =()=>{
+  console.log("check")
+  Animated.spring(animation,{
+    toValue:1,
+useNativeDriver:true
 
+  }).start()
+}
   // Disable back button on the login screen
   useEffect(() => {
     const disableBackButton = () => true;
@@ -26,6 +35,7 @@ const Login = ({ navigation }) => {
     const blurListener = navigation.addListener('blur', () => {
       BackHandler.removeEventListener('hardwareBackPress', disableBackButton);
     });
+    setTimeout(startAnimation,800)
 
     return () => {
       focusListener();
@@ -55,7 +65,7 @@ const Login = ({ navigation }) => {
         <Text style={styles.welcomeText}>Welcome Back!</Text>
         <Text style={styles.subHeaderText}>Log in to your account</Text>
 
-        <View style={styles.formContainer}>
+        <Animated.View style={[styles.formContainer,{transform:[{translateY:animation.interpolate({inputRange:[0,1],outputRange:[300,0]})}]}]}>
           <InputField
             placeholder="Username or Email"
             value={email}
@@ -86,11 +96,15 @@ const Login = ({ navigation }) => {
             width="100%"
             style={styles.loginButton}
           />
-        </View>
+        </Animated.View>
 
         <View style={styles.footerContainer}>
           <Text style={styles.noAccountText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={()=>navigation.navigate("showGrid")}>
+          <TouchableOpacity onPress={()=>{
+            startAnimation()
+           // navigation.navigate("SignUp")
+            }
+            }>
             <Text style={styles.signUpText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
@@ -120,6 +134,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   formContainer: {
+   
     backgroundColor: '#2C2F3F',
     borderRadius: 15,
     padding: 20,

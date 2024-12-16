@@ -5,11 +5,11 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import Button from "../../components/button/Button"
 import { StatusBarWrapper } from "../../components/statusBarWrapper/StatusBarWrapper"
-import { AppContext } from "../../context_api/AppContext"
+
 
 
 const SetAge = ({ navigation }) => {
-    const { setUpDetails, setSetUpDetails } = useContext(AppContext);
+    const { setUpDetails, setSetUpDetails } = useContext();
 
     const ages = Array.from({ length: 100 }, (_, i) => i + 1); // Array of ages from 1 to 100
     const [selectedAge, setSelectedAge] = useState(25);

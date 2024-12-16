@@ -5,8 +5,7 @@ import ContinueButton from './Button';
 import ColorCode from '../../utils/ColorConst';
 import AppBar from './AppBar';
 import pickImage from '../../utility/validations/imagepicker';
-import { AppContext } from '../../context_api/AppContext';
-import { updateUser } from '../../api/authApi';
+
 
 export default function FillProfile({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);

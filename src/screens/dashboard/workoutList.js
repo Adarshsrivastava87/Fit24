@@ -8,7 +8,7 @@ const ExerciseList = () => {
   const navigation = useNavigation();
 
   const exercises = [
-    { id: '1', name: 'Push Ups', howmuchDone: 90 },
+    { id: '1', name: 'Push Ups', howmuchDone: 10 },
     { id: '2', name: 'Squats', howmuchDone: 80 },
     { id: '3', name: 'Plank', howmuchDone: 50 },
     { id: '4', name: 'Pull Ups', howmuchDone: 100 },
@@ -45,10 +45,10 @@ const ExerciseList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Workout of the Day</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("ShowGrid")}>
-          <Text style={styles.signUpText}>View all</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>Our collection</Text>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("ShowGrid")}>
+          <Text style={styles.signUpText}></Text>
+        </TouchableOpacity> */}
       </View>
       <FlatList
         data={exercises}
@@ -63,10 +63,7 @@ const ExerciseList = () => {
 const styles = StyleSheet.create({
   container: {
    flex: 1,
-    backgroundColor: ColorCode.white, // Soft background color
-    paddingHorizontal: 16,
-    paddingTop: 16,
-   // paddingBottom:100
+   padding:5
   },
   header: {
     flexDirection: 'row',
@@ -75,9 +72,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   title: {
-    fontSize: 24,
+    
+    fontSize: 20,
     fontWeight: 'bold',
-    color: ColorCode.black,
+    color:ColorCode.textColor,
   },
   signUpText: {
     fontSize: 16,

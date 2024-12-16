@@ -10,14 +10,12 @@ import Button from '../../components/button/Button';
 import {StatusBarWrapper} from '../../components/statusBarWrapper/StatusBarWrapper';
 import { Formik } from 'formik';
 import signUpValidation from '../../utility/validations/signupValidation';
-import { AppContext } from '../../context_api/AppContext';
-import { registerUser } from '../../api/authApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const SignUp = ({navigation}) => {
-  const { setLoginStatus, setUserDetails } = useContext(AppContext);
+  const { setLoginStatus, setUserDetails } = useContext();
   const onPress = async (values) => {
     const name = values.fullName.split(" ");
     const data = {

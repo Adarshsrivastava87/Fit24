@@ -9,12 +9,12 @@ import {
   TouchableOpacity,
   Dimensions,
   Pressable,
+  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBarWrapper } from '../../components/statusBarWrapper/StatusBarWrapper';
 import showAlert from '../../utility/validations/Alert';
 import Loader from '../../components/loader/Loader';
-import { AppContext } from '../../context_api/AppContext';
 import PedometerWrapper from './PedometerWrapper';
 import TimerWrapper from './TimerWrapper';
 import { sendUserActivityData } from '../../api/activityAPI';
@@ -26,6 +26,7 @@ import UserProfileSection from '../profile/userProfileSection';
 import ColorCode from '../../utils/ColorConst';
 import CustomActivityComponents from './Activity';
 import EmptyBox from '../../utility/validations/utils';
+import OurCollection from './our_collection';
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -38,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
     apiCalled,
     setAPICalled,
     setPedoReset
-  } = useContext(AppContext);
+  } = useContext();
   const CALORIE_RATE = 0.04;
   const DISTANCE_RATE = 0.78;
   const calledRef = useRef(apiCalled);
@@ -89,30 +90,27 @@ const HomeScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <>
-     
-        {loading ? <Loader loading={loading} /> :
-        <View >
-        <UserProfileSection/>
-     <View style={{height:Dimensions.get("screen").height ,backgroundColor:"yellow"}}>
-          <ScrollView style={styles.container} nestedScrollEnabled = {true}>
-          <CustomActivityComponents/>
-           <RecommendationSection/>
-            <ExerciseList/>
-           <EmptyBox Boxheight={160}/>
-          </ScrollView>
-          </View>
-          </View>
-        }
-   
-    </>
+
+    <SafeAreaView style={{ flex: 1 ,}}>
+      <UserProfileSection />
+      <ScrollView style={styles.container} nestedScrollEnabled>
+        <CustomActivityComponents />
+        <RecommendationSection />
+        {/* <ExerciseList /> */}
+        <OurCollection />
+        <EmptyBox Boxheight={20} />
+      </ScrollView>
+
+      <CustomTabs style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }} />
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:ColorCode.backgroundColor,
+   // backgroundColor: ColorCode.bgColor,
+    padding: 10
   },
   iconRow: {
     flexDirection: 'row',
@@ -173,7 +171,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 5,
   },
- 
+
   articles: {
     padding: 20,
     backgroundColor: '#002D63',

@@ -3,7 +3,7 @@ import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from
 import Button from "../../components/button/Button";
 import { StatusBarWrapper } from "../../components/statusBarWrapper/StatusBarWrapper";
 import AppBar from "./AppBar";
-import { AppContext } from "../../context_api/AppContext";
+
 
 const SetHeight = ({ navigation }) => {
   const { setUpDetails, setSetUpDetails } = useContext(AppContext);

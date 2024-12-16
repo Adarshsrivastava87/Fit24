@@ -2,10 +2,10 @@ import { useContext, useState } from "react"
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import Button from "../../components/button/Button"
 import { StatusBarWrapper } from "../../components/statusBarWrapper/StatusBarWrapper"
-import { AppContext } from "../../context_api/AppContext"
+
 
 const SetGender = ({navigation}) => {
-  const { setUpDetails, setSetUpDetails } = useContext(AppContext);
+  const { setUpDetails, setSetUpDetails } = useContext();
     
 
     const [gender, SetGender] = useState()

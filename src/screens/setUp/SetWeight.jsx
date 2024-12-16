@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from "react-native"
 import Button from "../../components/button/Button"
 import { StatusBarWrapper } from "../../components/statusBarWrapper/StatusBarWrapper"
-import { AppContext } from "../../context_api/AppContext"
 import AppBar from "./AppBar";
 
 const SetWeight = ({ navigation }) => {

@@ -38,11 +38,11 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: ColorCode.white,
-    borderBottomRightRadius: 10,
-    borderBottomLeftRadius: 10,
+    backgroundColor: ColorCode.ProfileBgColor,
+    borderBottomRightRadius: 25,
+    borderBottomLeftRadius: 25,
     elevation: 5,
-    height: Dimensions.get('screen').height * 0.1,
+    height: Dimensions.get('screen').height * 0.08,
   },
   leftSection: {
     justifyContent: 'center',
@@ -64,11 +64,11 @@ const style = StyleSheet.create({
   greeting: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    color: 'white',
   },
   subtitle: {
     fontSize: 14,
-    color: '#888',
+    color: 'white',
     marginTop: 4,
   },
   rightSection: {

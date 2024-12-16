@@ -4,12 +4,11 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Alert } from 'rea
 import ContinueButton from './Button';
 import ColorCode from '../../utils/ColorConst';
 import AppBar from './AppBar';
-import showAlert from '../../utility/validations/Alert';
-import { AppContext } from '../../context_api/AppContext';
+
 
 export default function SetupGoal({navigation}) {
   const [selectedGoal, setSelectedGoal] = useState(null);
-  const { setUpDetails, setSetUpDetails } = useContext(AppContext);
+  const { setUpDetails, setSetUpDetails } = useContext();
   
 
   const handleOptionPress = (goal) => {

@@ -2,12 +2,11 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Pedometer } from 'expo-sensors';
 // import BackgroundTimer from 'react-native-background-timer';
-import { AppContext } from '../../context_api/AppContext';
 
 
 const PedometerWrapper = () => {
 
-  const { setCurrentSteps, totalSteps, setTotalSteps, apiCalled, currentSteps, pedoReset, setPedoReset} = useContext(AppContext);
+  const { setCurrentSteps, totalSteps, setTotalSteps, apiCalled, currentSteps, pedoReset, setPedoReset} = useContext();
   const [isPedometerAvailable, setIsPedometerAvailable] = useState('checking');
   const [subscription, setSubscription] = useState(null);
   const firstMount = useRef(true);

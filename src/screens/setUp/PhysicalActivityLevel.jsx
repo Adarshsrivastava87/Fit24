@@ -4,11 +4,10 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import ContinueButton from './Button';
 import ColorCode from '../../utils/ColorConst';
 import AppBar from './AppBar';
-import { AppContext } from '../../context_api/AppContext';
 
 export default function PhysicalActivityLevel({navigation}) {
   const [selectedLevel, setSelectedLevel] = useState('');
-  const { setUpDetails, setSetUpDetails } = useContext(AppContext);
+  const { setUpDetails, setSetUpDetails } = useContext();
   
   const handleLevelSelect = (level) => {
     setSetUpDetails({...setUpDetails, level: level})

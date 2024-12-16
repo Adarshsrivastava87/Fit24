@@ -2,10 +2,9 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {Accelerometer} from 'expo-sensors';
 // import BackgroundTimer from 'react-native-background-timer';
-import {AppContext} from '../../context_api/AppContext';
 
 const TimerWrapper = () => {
-  const {setSeconds, setAPICalled, apiCalled} = useContext(AppContext);
+  const {setSeconds, setAPICalled, apiCalled} = useContext();
   const THRESHOLD = 1.1111;
   const [isMoving, setIsMoving] = useState(false);
   const movementStartTime = useRef(null);
