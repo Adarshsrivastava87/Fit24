@@ -1,7 +1,12 @@
 import { View, StyleSheet, Dimensions, Text, Image, TouchableOpacity } from 'react-native';
 import ColorCode from '../../utils/ColorConst';
+import { useNavigation } from '@react-navigation/native';
 
 const UserProfileSection = () => {
+  const navigation = useNavigation()
+  handleProfilePress = () => {
+    navigation.navigate('ProfileScreen')
+  }
   return (
     <View style={style.container}>
       {/* Left: Circular Image */}
@@ -22,7 +27,7 @@ const UserProfileSection = () => {
 
       {/* Right: Bell Icon */}
       <View style={style.rightSection}>
-        <TouchableOpacity onPress={() => console.log('Bell Pressed')}>
+        <TouchableOpacity onPress={() =>handleProfilePress()}>
           <Image
             source={require('../../assets/icons/bell_icon.png')}
             style={style.bellIcon}

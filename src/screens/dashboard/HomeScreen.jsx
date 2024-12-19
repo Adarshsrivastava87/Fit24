@@ -1,97 +1,26 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {  } from 'react';
 import {
-  View,
-  Text,
   StyleSheet,
   ScrollView,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-  Pressable,
   SafeAreaView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { StatusBarWrapper } from '../../components/statusBarWrapper/StatusBarWrapper';
-import showAlert from '../../utility/validations/Alert';
-import Loader from '../../components/loader/Loader';
-import PedometerWrapper from './PedometerWrapper';
-import TimerWrapper from './TimerWrapper';
-import { sendUserActivityData } from '../../api/activityAPI';
 import RecommendationSection from './Recommandation';
-import YourComponent from './Tabs';
 import CustomTabs from './Tabs';
-import ExerciseList from './workoutList';
 import UserProfileSection from '../profile/userProfileSection';
-import ColorCode from '../../utils/ColorConst';
 import CustomActivityComponents from './Activity';
 import EmptyBox from '../../utility/validations/utils';
 import OurCollection from './our_collection';
+import ColorCode from '../../utils/ColorConst';
+import ExerciseList from './workoutList';
 
 const HomeScreen = ({ navigation }) => {
-  const {
-    currentSteps,
-    totalSteps,
-    seconds,
-    stepData,
-    setStepData,
-    userDetails,
-    apiCalled,
-    setAPICalled,
-    setPedoReset
-  } = useContext();
-  const CALORIE_RATE = 0.04;
-  const DISTANCE_RATE = 0.78;
-  const calledRef = useRef(apiCalled);
-  const secondRef = useRef(seconds);
-  const stepsRef = useRef(currentSteps);
-
-  const [loading, setLoading] = useState(true)
-
-  // useEffect(() => {
-  //   calledRef.current = apiCalled;
-  //   secondRef.current = seconds;
-  //   stepsRef.current = currentSteps;
-  // }, [seconds, apiCalled, currentSteps])
-
-  // useEffect(() => {
-  //   const id = setInterval(() => {
-  //     if (secondRef.current > 1 && !calledRef.current) {
-  //       const addOns =
-  //       {
-  //         steps: stepsRef.current,
-  //         timerDurationSeconds: secondRef.current,
-  //         timestamp: new Date().getTime(),
-  //         caloriesData: stepsRef.current * CALORIE_RATE,
-  //         distance: stepsRef.current * DISTANCE_RATE,
-  //       };
-
-  //       updateUserData(addOns);
-  //       setStepData(data => [...data, addOns]);
-  //       setAPICalled(() => true);
-  //       setPedoReset(() => true);
-  //     }
-  //   }, 10000);
-  //   return () => clearInterval(id);
-  // }, []);
-
-  // const updateUserData = async (request) => {
-  //   await sendUserActivityData(request);
-  // }
-
-  handleProfilePress = () => {
-    navigation.navigate('ProfileScreen')
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000); // Simulate a 3-second loading time
-  }, []);
+ 
+ 
 
   return (
 
-    <SafeAreaView style={{ flex: 1 ,}}>
+    <SafeAreaView style={{ flex: 1 ,backgroundColor:ColorCode.grey}}>
       <UserProfileSection />
       <ScrollView style={styles.container} nestedScrollEnabled>
         <CustomActivityComponents />

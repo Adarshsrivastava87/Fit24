@@ -1,16 +1,14 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StatusBarWrapper } from '../../components/statusBarWrapper/StatusBarWrapper';
 import ColorCode from '../../utils/ColorConst';
-import { useContext, useEffect } from 'react';
 
 const ProfileScreen = ({ navigation }) => {
-  const { setLoginStatus, setUserDetails, userDetails } = useContext();
+ 
 
   const handleDeleteAccount = async () => {
     const response = await deleteUser({});
     if (response?.data && response?.data?.status === 1) {
       // setLoader(false);
-      setUserDetails({});
       setLoginStatus(false);
       //await AsyncStorage.clear();
       navigation.navigate('Login');
@@ -54,7 +52,7 @@ const ProfileScreen = ({ navigation }) => {
         <View style={{ height: 40, backgroundColor: ColorCode.green, borderBottomLeftRadius: 100, borderBottomRightRadius: 100 }} ></View>
         <View style={styles.pageContainer} >
           <Text style={{ color: 'white', fontSize: 26, marginTop: 20 }}>
-            {userDetails?.firstName}{" "}{userDetails?.lastName}
+           "ok"
           </Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <View
@@ -68,7 +66,7 @@ const ProfileScreen = ({ navigation }) => {
                 width: 90,
               }}>
               <Text style={{ color: 'white' }}>Height</Text>
-              <Text style={{ color: 'white' }}>{cmToFeetAndInches(Number(userDetails?.height))}</Text>
+              
             </View>
             <View
               style={{
@@ -81,7 +79,7 @@ const ProfileScreen = ({ navigation }) => {
                 width: 90,
               }}>
               <Text style={{ color: 'white' }}>Weight</Text>
-              <Text style={{ color: 'white' }}>{userDetails?.weight ?? 178} lbs</Text>
+              
             </View>
             <View
               style={{
@@ -94,7 +92,7 @@ const ProfileScreen = ({ navigation }) => {
                 width: 90,
               }}>
               <Text style={{ color: 'white' }}>Age</Text>
-              <Text style={{ color: 'white' }}>{userDetails?.age ?? 28}</Text>
+              
             </View>
           </View>
           <View

@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet, View, Text, Image, Animated } from "react-nativ
 import ColorCode from "../../utils/ColorConst";
 import React, { useEffect, useRef } from "react";
 import { useIsFocused } from "@react-navigation/native";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
 
 const CustomActivityComponents = () => {
 
@@ -30,7 +31,7 @@ const CustomActivityComponents = () => {
 
   useEffect(() => {
     if (isFocused) {
-      startAnimation(); // Trigger animations when screen is focused
+     startAnimation(); // Trigger animations when screen is focused
     }
   }, [isFocused]);
 
@@ -47,11 +48,10 @@ const CustomActivityComponents = () => {
             }}
           />
         </View>
-        <View style={{ width: "50%", justifyContent: "flex-end" }} >
-          <Text style={{ fontWeight: "bold", fontSize: 16 }}>Total Food</Text>
-          <Text>250 cal</Text>
+       
+        
         </View>
-      </View>
+    
     )
   }
 
@@ -80,13 +80,23 @@ const CustomActivityComponents = () => {
         </View>
 
         <View style={style.bottomContainer}>
-          <View style={{ flexDirection: "row", justifyContent: "space-between", }}>
-            {componentData()}
-            {componentData()}
-
-          </View>
+        <View>
+          <Text style={{color:ColorCode.white,fontSize:18,fontWeight:"600"}}>Work out Progress</Text>
+          <Text style={{color:ColorCode.white,fontWeight:"500",fontSize:12}}>75 % Work out Progress</Text>
         </View>
+        <AnimatedCircularProgress
+          size={50} // Adjusted size for better look
+          width={6} // Thicker progress bar
+          fill={75}
+          tintColor={ColorCode.green}
+          backgroundColor={ColorCode.grey}
+          lineCap="round"
+        >
+          {(fill) => <Text style={style.progressText}>{`${Math.round(fill)}%`}</Text>}
+        </AnimatedCircularProgress>
       </View>
+      </View>
+     
     </Animated.View>
   );
 };
@@ -135,12 +145,11 @@ const style = StyleSheet.create({
   },
   cardTextContainer: {
     justifyContent: 'center',
-    alignItems: 'flex-start',
     padding: 15,
   },
   weeklyChallengeText: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 19,
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -157,11 +166,23 @@ const style = StyleSheet.create({
     resizeMode: 'cover',
   },
   bottomContainer: {
-    height: Dimensions.get("screen").height * 0.06,
-    backgroundColor: "white",
+   paddingHorizontal:30,
+    flexDirection:"row",
+    height: Dimensions.get("screen").height * 0.07,
+    backgroundColor:"black",
     borderRadius: 10,
     elevation: 10,
-    padding: 10
+   alignItems:"center",
+   justifyContent:"space-between"
+    //padding: 10
+  },
+  rightContainer: {
+    alignItems: 'center',
+  },
+  progressText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: ColorCode.white,
   },
 });
 

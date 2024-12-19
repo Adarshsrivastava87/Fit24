@@ -65,6 +65,7 @@ const data = [
       <FlatList
       nestedScrollEnabled
       progressViewOffset={false}
+      scrollIndicatorInsets={false}
         data={data}
         horizontal={true}
         renderItem={renderItem}
@@ -120,6 +121,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
+    elevation:10
   },
   cardText: {
     fontWeight:"500",
